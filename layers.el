@@ -92,11 +92,11 @@
    ;; 8. Fonts
    ;;unicode-fonts
 
-   ;; 9. Fun (Dynamically loaded based on gui environment (See below))
-   ;;emoji (Dynamically loaded based on gui environment)
-   ;;games (Dynamically loaded based on gui environment)
-   ;;selectric (Dynamically loaded based on gui environment)
-   ;;xkcd (Dynamically loaded based on gui environment)
+   ;; 9. Fun (Conditionally loaded based on gui environment (See below))
+   ;;emoji (Conditionally loaded based on gui environment)
+   ;;games (Conditionally loaded based on gui environment)
+   ;;selectric (Conditionally loaded based on gui environment)
+   ;;xkcd (Conditionally loaded based on gui environment)
 
    ;; 10. international
    ;;chinese
@@ -146,7 +146,7 @@
    theming
 
    ;; 22. Tools
-   ;;ansible (Dynamically loaded based on if ansible exists on the system (See Below))
+   ;;ansible (Conditionally loaded based on if ansible exists on the system (See Below))
    ;;bm
    ;;cfengine
    ;;chrome
@@ -155,7 +155,7 @@
    ;;finance
    ;;(geolocation :variables
    ;;             geolocation-enable-weather-forecast t)
-   ;;nginx (Dynamically loaded based on if Nginx is installed on the system (See Below))
+   ;;nginx (Conditionally loaded based on if Nginx is installed on the system (See Below))
    pandoc
    pass
    (shell :variables
@@ -179,7 +179,7 @@
    )
  )
 
-;; Dynamically configured layers
+;; Conditionally configured layers
 (when (display-graphic-p)
   (configuration-layer/declare-layers
    '(
