@@ -45,8 +45,16 @@
 ;;
 ;;; Code:
 
+
 (defconst drbr-packages
   '(
+    (fireplace :location elpa)
+
+    ;; Org
+    (org-mind-map :location elpa)
+    ;; Org-noter maybe?
+    ;;(org-super-agenda :location elpa)
+    ;;(org-contacts :location built-in)
 
     )
     "The list of Lisp packages required by the drbr layer.
@@ -76,6 +84,45 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun drbr/init-org-mind-map()
+  (require 'ox)
+  (use-package org-mind-map
+    :after org
+    :config
+    (setq org-mind-map-engine "dot")  ; default; Directed Graph
+    ;; (setq org-mind-map-engine "neato")  ; Undirected Spring Graph"
+    ;; (setq org-mind-map-engine "twopi")  ; Radial Layout"
+    ;; (setq org-mind-map-engine "circo")  ; Circular Layout"
+    ;; (setq org-mind-map-engine "p")  ; Undirected Spring Force-Directed"
+        ))
+
+;;(defun drbr/init-org-super-agenda()
+;;  (use-package org-super-agenda))
+
+;; (defun drbr/post-init-persp-mode ()
+;;   (spacemacs|define-custom-layout "@Drbr-Org"
+;;     :binding "O"
+;;     :body
+;;     (split-window-right)
+;;     (winum-select-window-2)
+;;     (let ((agenda-files (org-agenda-files)))
+;;       (if agenda-files
+;;           (find-file (first agenda-files))
+;;         (user-error "Error: No agenda files configured, nothing to display.")))
+;;     (winum-select-window-1)))
+
+;;(defun drbr/init-org-contacts()
+;;  (use-package org-contacts))
+
+(defun drbr/init-fireplace()
+  (use-package fireplace))
+
+
+;;(when (configuration-layer/package-drbr 'company)
+;;  (defun drbr/post-init-firelpace ()
+;; This makes no reference to `some-weird-package', which may have
+;; been excluded by the user
+;;    (spacemacs|add-company-hook fireplace)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; packages.el ends here

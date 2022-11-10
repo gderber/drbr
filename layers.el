@@ -47,26 +47,182 @@
 
 (configuration-layer/declare-layers
  '(
+   ;; 1. Personal Layers
    drbr-git
-   drbr-org-mode
-   drbr-passwordstore
 
-   ;; ==================================================================
-   ;;
-   ;; Conditionally loaded layers
-   ;; drbr-gui: Only used in graphical environments
-   ;; drbr-ansible: Only loaded if ansible exists on the system
-   ;;
-   ;; TODO Set to conditionally load these layers
-   ;;
-   ;; ==================================================================
-   ;;(when (display-graphic-p)
-   ;;  drbr-gui
-   ;;  )
-   ;;(when executable-find ansible
-   ;;      drbr-ansible
-   ;;      )
-   ))
+   ;; 2. Chat
+   ;; erc
+   ;; jabber
+   ;; rcirc
+   ;; slack
+
+   ;; 3. Checkers
+   spell-checking
+   syntax-checking
+
+   ;; 4. Completion
+   (auto-completion :variables
+                    auto-completion-return-key-behavior 'complete
+                    auto-completion-tab-key-behavior 'complete
+                    auto-completion-enable-snippets-in-popup t)
+   helm
+   ;; ivy
+   ;; templates
+
+   ;; 5. Email
+   gnus
+
+   ;; 6. Emacs
+   ;;better-defaults
+   ;;helpful
+   (ibuffer :variables
+            ibuffer-group-buffers-by 'projects)
+   ;;org (Moved to drbr-org)
+   ;;outshine
+   ;;quickurl
+   ;;semantic
+   ;;smex
+   ;;tabs
+   ;;typography
+
+   ;; 7. File trees
+   ;;neotree
+   treemacs
+
+   ;; 8. Fonts
+   ;;unicode-fonts
+
+   ;; 9. Fun (Dynamically loaded based on gui environment (See below))
+   ;;emoji (Dynamically loaded based on gui environment)
+   ;;games (Dynamically loaded based on gui environment)
+   ;;selectric (Dynamically loaded based on gui environment)
+   ;;xkcd (Dynamically loaded based on gui environment)
+
+   ;; 10. international
+   ;;chinese
+   ;;japanese
+   ;;(keyboard-layout :variables kl-layout 'dvorak)
+
+   ;; 11. Misc
+   ;;copy-as-format
+   ;;dtrt-indent
+   ;;ietf
+   ;;multiple-cursors
+   ;;nav-flash
+   ;;parinfer
+
+   ;; 12. Music
+   ;;alda
+   ;;extempore
+   ;;pianobar
+   ;;spotify
+   ;;tidalcycles
+
+   ;; 13. Operating Systems
+
+   ;; 14. Pair programming
+
+   ;; 15. Programming languages
+   ;; Moved to drbr-git layer
+
+   ;; 16. Readers
+   ;;elfeed
+
+   ;; 17.
+
+   ;; 18. Source Control
+   ;; Moved to drbr-git layer
+
+   ;; 19. Spacemacs
+
+   ;; 20. Tagging
+   ;;cscope
+   ;; TODO Fix errors (possbily recompile global from source)
+   gtags
+
+   ;; 21. Themes
+   colors
+   themes-megapack
+   theming
+
+   ;; 22. Tools
+   ;;ansible (Dynamically loaded based on if ansible exists on the system (See Below))
+   ;;bm
+   ;;cfengine
+   ;;chrome
+   command-log
+   ;;docker
+   ;;finance
+   ;;(geolocation :variables
+   ;;             geolocation-enable-weather-forecast t)
+   ;;nginx (Dynamically loaded based on if Nginx is installed on the system (See Below))
+   pandoc
+   pass
+   (shell :variables
+          shell-default-height 30
+          shell-default-position 'bottom
+          shell-default-shell 'ansi-term)
+   ;;systemd
+   search-engine
+
+   ;; 23. Vim
+   ;;evil-cleverparens
+
+   ;; 24. Web Services
+   ;;confluence
+   ;;eaf
+   ;;evernote
+   ;;twitteer
+   ;;wakatime
+
+
+   )
+ )
+
+;; Dynamically configured layers
+(when (display-graphic-p)
+  (configuration-layer/declare-layers
+   '(
+     emoji
+     games
+     xkcd
+     epub
+     pdf
+     speed-reading
+
+     ;; TODO This really should be enabled based on if org files exist.
+     (org :variables
+          org-enable-notifications t
+          org-start-notification-daemon-on-startup t
+          org-enable-org-journal-support t
+          org-journal-dir "~/Documents/Org/.journal/"
+          org-journal-file-format "%Y-%m-%d"
+          org-enable-github-support t
+          org-projectile-file "TODOs.org"
+          org-want-todo-bindings t
+          org-enable-org-brain-support t
+          org-enable-epub-support t)
+
+     )))
+
+(when (executable-find "ansible")
+  (configuration-layer/declare-layers
+   '(
+     ansible
+     )))
+
+(when (executable-find "apache2")
+  (configuration-layer/declare-layers
+  '(
+    apache
+    )))
+
+(when (executable-find "nginx")
+  (configuration-layer/declare-layers
+   '(
+     nginx
+     )))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; layers.el ends here
