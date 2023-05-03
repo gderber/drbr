@@ -384,7 +384,7 @@
 (add-to-list 'auto-mode-alist '("profile" . shell-script-mode))
 
 
-;;
+;; Development Environment
 (setq-default git-magit-status-fullscreen t)
 (setq auth-sources '("~/.authinfo.gpg"))
 
@@ -392,8 +392,6 @@
       '(("~/Documents/Development/" . 2) ("~/Documents/Org" . 2)))
 
 (setq  forge-topic-list-limit '(100 . 0))
-
-
 
 ;; Graphic UI Environment
 (when (display-graphic-p)

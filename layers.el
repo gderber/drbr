@@ -48,7 +48,6 @@
 (configuration-layer/declare-layers
  '(
    ;; 1. Personal Layers
-   drbr-git
 
    ;; 2. Chat
    ;; erc
@@ -123,7 +122,7 @@
    ;; 14. Pair programming
 
    ;; 15. Programming languages
-   ;; Moved to drbr-git layer
+   ;; Conditionally loaded based on user directories (See below)
 
    ;; 16. Readers
    ;;elfeed
@@ -131,7 +130,8 @@
    ;; 17.
 
    ;; 18. Source Control
-   ;; Moved to drbr-git layer
+   ;; Conditionally loaded based on user directories (See below)
+
 
    ;; 19. Spacemacs
 
@@ -162,7 +162,7 @@
           shell-default-height 30
           shell-default-position 'bottom
           shell-default-shell 'ansi-term)
-   ;;systemd
+   systemd
    search-engine
 
    ;; 23. Vim
@@ -190,20 +190,62 @@
      pdf
      speed-reading
 
-     ;; TODO This really should be enabled based on if org files exist.
-     (org :variables
-          org-enable-notifications t
-          org-start-notification-daemon-on-startup t
-          org-enable-org-journal-support t
-          org-journal-dir "~/Documents/Org/.journal/"
-          org-journal-file-format "%Y-%m-%d"
-          org-enable-github-support t
-          org-projectile-file "TODOs.org"
-          org-want-todo-bindings t
-          org-enable-org-brain-support t
-          org-enable-epub-support t)
-
      )))
+
+(when (file-directory-p "~/Documents/Org")
+  (configuration-layer/declare-layers
+   '(
+     (org :variables
+       org-enable-notifications t
+       org-start-notification-daemon-on-startup t
+       org-enable-org-journal-support t
+       org-journal-dir "~/Documents/Org/.journal/"
+       org-journal-file-format "%Y-%m-%d"
+       org-enable-github-support t
+       org-projectile-file "TODOs.org"
+       org-want-todo-bindings t
+       org-enable-org-brain-support t
+       org-enable-epub-support t)
+     )))
+
+(when (file-directory-p "~/Documents/Development")
+  (configuration-layer/declare-layers
+   '(
+     ;; 15. Programming Languages
+     c-c++
+     csv
+     emacs-lisp
+     graphviz
+     html
+     javascript
+     markdown
+     lua
+     php
+     (python :variables
+             python-backend 'anaconda
+             python-test-runner 'pytest
+             python-formatter 'yapf
+             python-format-on-save t
+             python-sort-imports-on-save t
+             python-fill-column 100
+             python-spacemacs-indent-guess nil)
+     rust
+     shell-scripts
+     sql
+     windows-scripts
+     yaml
+
+     ;; 18. Source Control
+     (git :variables
+          git-enable-magit-gitflow-plugin t
+          git-enable-magit-delta-plugin t
+          git-enable-magit-todos-plugin t)
+
+     ;; 22. Tools
+     cmake
+     debug
+     )))
+
 
 (when (executable-find "ansible")
   (configuration-layer/declare-layers
