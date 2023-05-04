@@ -246,11 +246,17 @@
      debug
      )))
 
-
 (when (executable-find "ansible")
   (configuration-layer/declare-layers
    '(
      ansible
+     markdown
+     yaml
+
+     (git :variables
+          git-enable-magit-gitflow-plugin t
+          git-enable-magit-delta-plugin t
+          git-enable-magit-todos-plugin t)
      )))
 
 (when (executable-find "apache2")
