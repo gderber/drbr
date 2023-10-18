@@ -526,6 +526,11 @@
   (xkcd)
   )
 
+(spacemacs|define-custom-layout "@Drbr-fireplace"
+  :binding "ff"
+  :body
+  (fireplace)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
