@@ -1,50 +1,9 @@
-;;; layers.el ---
+;; =================================================================================================
 ;;
 ;; Filename: layers.el
-;; Description:
-;; Author: Geoff S Derber
-;; Maintainer:
-;; Created: Mon Jun 10 18:41:03 2019 (-0400)
-;; Version:
-;; Package-Requires: ()
-;; Last-Updated: Mon Jun 10 18:41:04 2019 (-0400)
-;;           By: Geoff S Derber
-;;     Update #: 1
-;; URL:
-;; Doc URL:
-;; Keywords:
-;; Compatibility:
+;; Author: G S Derber
 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Commentary:
-;;
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Change Log:
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or (at
-;; your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Code:
-
+;; =================================================================================================
 (configuration-layer/declare-layers
  '(
    ;; 1. Personal Layers
@@ -64,7 +23,8 @@
                     auto-completion-return-key-behavior 'complete
                     auto-completion-tab-key-behavior 'complete
                     auto-completion-enable-snippets-in-popup t)
-   helm
+   (helm :variables
+         helm-position 'bottom)
    ;; ivy
    ;; templates
 
@@ -86,7 +46,12 @@
 
    ;; 7. File trees
    ;;neotree
-   treemacs
+   (treemacs :variables
+             treemacs-use-follow-mode t
+             treemacs-use-filewatch-mode t
+             treemacs-use-git-mode 'deferred
+             treemacs-lock-width t)
+
 
    ;; 8. Fonts
    ;;unicode-fonts
@@ -122,7 +87,10 @@
    ;; 14. Pair programming
 
    ;; 15. Programming languages
-   ;; Conditionally loaded based on user directories (See below)
+   ;; Emacs-lisp layer is not exactly required by spacemacs, but weird things happen if it's not
+   ;; installed
+   emacs-lisp
+   ;; The remainder Conditionally loaded based on user directories (See below)
 
    ;; 16. Readers
    ;;elfeed
@@ -137,8 +105,8 @@
 
    ;; 20. Tagging
    ;;cscope
-   ;; TODO Fix errors (possbily recompile global from source)
-   gtags
+   (gtags :variables
+          gtags-enable-by-default t)
 
    ;; 21. Themes
    colors
@@ -180,7 +148,10 @@
  )
 
 ;; Conditionally configured layers
-(when (display-graphic-p)
+;; Originally based on if emacs was in a graphical environment.  This would fail if emacs was started automatically
+;; upon login as a daemon, and these layers would be removed.  Requiring, reloading the layers manually each time.
+;;(when (display-graphic-p)
+(when (file-directory-p "~/Documents/")
   (configuration-layer/declare-layers
    '(
      emoji
@@ -190,6 +161,8 @@
      pdf
      speed-reading
 
+     ;; needed by xkcd
+     javascript
      )))
 
 (when (file-directory-p "~/Documents/Org")
@@ -212,15 +185,16 @@
   (configuration-layer/declare-layers
    '(
      ;; 15. Programming Languages
-     c-c++
+     (c-c++ :variables
+            c-c++adopt-subprojects t
+            c-c++-enable-organize-includes-on-save t
+            c-c++backend 'lsp-clangd)
      csv
-     emacs-lisp
      graphviz
      html
-     javascript
      markdown
-     lua
-     php
+     ;; lua
+     ;; php
      (python :variables
              python-backend 'anaconda
              python-test-runner 'pytest
@@ -229,17 +203,13 @@
              python-sort-imports-on-save t
              python-fill-column 100
              python-spacemacs-indent-guess nil)
-     rust
+     ;; rust
      shell-scripts
      sql
-     windows-scripts
+     ;; windows-scripts
      yaml
 
-     ;; 18. Source Control
-     (git :variables
-          git-enable-magit-gitflow-plugin t
-          git-enable-magit-delta-plugin t
-          git-enable-magit-todos-plugin t)
+
 
      ;; 22. Tools
      cmake
@@ -253,11 +223,26 @@
      markdown
      yaml
 
-     (git :variables
-          git-enable-magit-gitflow-plugin t
-          git-enable-magit-delta-plugin t
-          git-enable-magit-todos-plugin t)
-     )))
+)))
+
+(when (or
+       (executable-find "ansible")
+       (file-directory-p "~/Documents/Development")
+       (file-directory-p "~/Documents/Org"))
+  (configuration-layer/declare-layers
+   ;; 18. Source Control
+  '(
+    (git :variables
+       git-enable-magit-gitflow-plugin t
+       git-enable-magit-delta-plugin t
+       git-enable-magit-todos-plugin t)
+    (version-control :variables
+                     version-control-diff-tool 'git-gutter
+                     version-control-diff-side 'left
+                     version-control-global-margin t)
+    )
+  )
+)
 
 (when (executable-find "apache2")
   (configuration-layer/declare-layers
