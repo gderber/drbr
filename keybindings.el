@@ -44,6 +44,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
+(spacemacs/declare-prefix "id" "Date/Time")
+(spacemacs/set-leader-keys
+  "idi" 'drbr/insert-date-iso
+  "idl" 'drbr/insert-date-long
+  "cR" 'comment-or-uncomment-region
+)
 
 ;; ; Now the functions are defined, we can assign them to keys.
 ;; (global-set-key (kbd "C-c d") 'insert-date)

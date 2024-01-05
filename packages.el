@@ -55,6 +55,8 @@
     ;; Org-noter maybe?
     ;;(org-super-agenda :location elpa)
 
+    (fancy-battery :excluded t)
+    (golden-ratio :excluded t)
     )
     "The list of Lisp packages required by the drbr layer.
 

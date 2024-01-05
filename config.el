@@ -373,11 +373,11 @@
 (when (executable-find "ansible")
   (when (file-exists-p "~/.vault_pass.txt")
     (setq ansible-vault-password-file "~/.vault_pass.txt")
-    (add-hook 'ansible-vault-mode-hook 'fci-mode)))
+    (display-fill-column-indicator-mode)))
 
 ;; Custom Layouts
-(spacemacs|define-custom-layout "@Drbr-Ansible"
-  :binding "pa"
+(spacemacs|define-custom-layout "@Drbr-Ansible-Autonomy"
+  :binding "paba"
   :body
   (find-file "~/.ansible/collections/ansible_collections/bloodymage/autonomy/")
   (spacemacs/treemacs-project-toggle)
@@ -388,8 +388,44 @@
   (winum-select-window-1)
   )
 
-(spacemacs|define-custom-layout "@Drbr-AnsibleInventories"
-  :binding "pA"
+(spacemacs|define-custom-layout "@Drbr-Ansible-Gaming"
+  :binding "pahg"
+  :body
+  (find-file "~/.ansible/collections/ansible_collections/hearthminion/gaming/")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
+(spacemacs|define-custom-layout "@Drbr-Ansible-Games"
+  :binding "pahG"
+  :body
+  (find-file "~/.ansible/collections/ansible_collections/hearthminion/games/")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
+(spacemacs|define-custom-layout "@Drbr-Ansible-Hearthminion"
+  :binding "pahh"
+  :body
+  (find-file "~/.ansible/collections/ansible_collections/hearthminion/hearthminion/")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
+(spacemacs|define-custom-layout "@Drbr-Ansible-Inventories"
+  :binding "pai"
   :body
   (find-file "~/.ansible/inventories/")
   (spacemacs/treemacs-project-toggle)
@@ -400,10 +436,34 @@
   (winum-select-window-1)
   )
 
+(spacemacs|define-custom-layout "@Drbr-Ansible-RadiantEndeavors"
+  :binding "par"
+  :body
+  (find-file "~/.ansible/collections/ansible_collections/radiantendeavors/radiantendeavors/")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
 (spacemacs|define-custom-layout "@Drbr-EmacsLayer"
-  :binding "pd"
+  :binding "peld"
   :body
   (find-file "~/.emacs.d/private/drbr")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
+(spacemacs|define-custom-layout "@Drbr-Spacemacs"
+  :binding "pes"
+  :body
+  (find-file "~/.emacs.d/")
   (spacemacs/treemacs-project-toggle)
   (winum-select-window-1)
   (display-fill-column-indicator-mode)
@@ -416,6 +476,42 @@
   :binding "ph"
   :body
   (find-file "~/Documents/Development/homeassistant_config/configuration.yaml")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
+(spacemacs|define-custom-layout "@Drbr-Mythtv"
+  :binding "pmm"
+  :body
+  (find-file "~/Documents/Development/mythtv/README.md")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
+(spacemacs|define-custom-layout "@Drbr-Mythtv-Ansible"
+  :binding "pma"
+  :body
+  (find-file "~/Documents/Development/mythtv_ansible/README.md")
+  (spacemacs/treemacs-project-toggle)
+  (winum-select-window-1)
+  (display-fill-column-indicator-mode)
+  (split-window-right)
+  (magit-status-here)
+  (winum-select-window-1)
+  )
+
+(spacemacs|define-custom-layout "@Drbr-Mythtv-Packaging"
+  :binding "pmp"
+  :body
+  (find-file "~/Documents/Development/mythtv_packaging/README.rst")
   (spacemacs/treemacs-project-toggle)
   (winum-select-window-1)
   (display-fill-column-indicator-mode)
@@ -475,7 +571,7 @@
 (spacemacs|define-custom-layout "@Drbr-strategy01-develop"
   :binding "ps1d"
   :body
-  (find-file "~/Documents/Development/strategy01/devel")
+  (find-file "~/Documents/Development/strategy01/development")
   (spacemacs/treemacs-project-toggle)
   (winum-select-window-1)
   (display-fill-column-indicator-mode)
@@ -508,6 +604,18 @@
   (winum-select-window-1)
   )
 
+(spacemacs|define-custom-layout "@Drbr-config-spacemacs"
+  :binding "ce"
+  :body
+  (find-file "~/.spacemacs")
+  )
+
+(spacemacs|define-custom-layout "@Drbr-config-ssh"
+  :binding "cs"
+  :body
+  (find-file "~/.ssh/config")
+  )
+
 (spacemacs|define-custom-layout "@Drbr-games-sudoku"
   :binding "Gs"
   :body
@@ -520,13 +628,13 @@
   (tetris)
   )
 
-(spacemacs|define-custom-layout "@Drbr-xkcd"
+(spacemacs|define-custom-layout "@Drbr-fun-xkcd"
   :binding "fx"
   :body
   (xkcd)
   )
 
-(spacemacs|define-custom-layout "@Drbr-fireplace"
+(spacemacs|define-custom-layout "@Drbr-fun-fireplace"
   :binding "ff"
   :body
   (fireplace)
