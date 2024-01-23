@@ -32,8 +32,8 @@
    gnus
 
    ;; 6. Emacs
-   ;;better-defaults
-   ;;helpful
+   ;;better-helpful
+   ;;defaults
    (ibuffer :variables
             ibuffer-group-buffers-by 'projects)
    ;;org (Moved to drbr-org)
@@ -47,10 +47,12 @@
    ;; 7. File trees
    ;;neotree
    (treemacs :variables
+             treemacs-lock-width t
+             treemacs-use-scope-type 'Perspectives
              treemacs-use-follow-mode t
              treemacs-use-filewatch-mode t
              treemacs-use-git-mode 'deferred
-             treemacs-lock-width t)
+             )
 
 
    ;; 8. Fonts

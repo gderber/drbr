@@ -45,6 +45,8 @@
 ;;
 ;;; Code:
 (spacemacs/declare-prefix "id" "Date/Time")
+;;(spacemacs/declare-prefix "lop" "Projects")
+
 (spacemacs/set-leader-keys
   "idi" 'drbr/insert-date-iso
   "idl" 'drbr/insert-date-long

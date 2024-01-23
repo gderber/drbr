@@ -1,24 +1,3 @@
-;; =================================================================================================
-;;
-;; Filename: config.el
-;; Author: G S Derber
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or (at
-;; your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
-;;
-;; =================================================================================================
 ;; Provide a useful error trace if loading this monster fails.
 (setq debug-on-error t)
 
@@ -266,7 +245,6 @@
 ;;           (org-projectile-todo-files)))
 
 
-
 ;;(setq-default dotspacemacs-configuration-layers '(
 ;; (keyboard-layout :variables kl-layout 'dvorak)))
 
@@ -280,30 +258,6 @@
 ;;(add-hook 'font-lock-mode-hook 'hc-highlight-hard-spaces)
 ;;(add-hook 'font-lock-mode-hook 'hc-highlight-trailing-whitespace)
 ;;(add-hook 'after-change-major-mode-hook 'fci-mode)
-
-;; Add hooks for various modes
-;; (with-eval-after-load 'cc-mode
-;;   (add-hook 'cc-mode-hook 'fci-mode))
-;; (with-eval-after-load 'shell-mode
-;;   (add-hook 'shell-mode-hook 'fci-mode))
-;; (with-eval-after-load 'conf-mode
-;;   (add-hook 'conf-mode-hook 'fci-mode))
-;; (with-eval-after-load 'python-mode
-;;   (add-hook 'python-mode-hook 'fci-mode))
-;; (with-eval-after-load 'yaml-mode
-;;   (add-hook 'yaml-mode-hook 'fci-mode))
-;; (with-eval-after-load 'emacs-lisp-mode
-;;   (add-hook 'emacs-lisp-mode-hook 'fci-mode))
-;; (with-eval-after-load 'php-mode-hook
-;;   (add-hook 'php-mode-hook 'fci-mode))
-;; (with-eval-after-load 'html-mode
-;;   (add-hook 'html-mode-hook 'fci-mode))
-;; (with-eval-after-load 'nxml-mode
-;;   (add-hook 'nxml-mode-hook 'fci-mode))
-;; (with-eval-after-load 'graphviz-dot-mode
-;;   (add-hook 'graphviz-dot-mode-hook 'fci-mode))
-;; (with-eval-after-load 'prog-mode
-;;   add-hook 'prog-mode-hook 'fci-mode)
 
 ;; Header
 ;;(autoload 'auto-update-file-header "header2")
@@ -366,7 +320,6 @@
   (setq sudoku-level 'medium)
   (setq sudoku-style 'unicode)
   (setq sudoku-autoinsert-mode nil)
-
   )
 
 ;; Ansible Environment
@@ -376,71 +329,12 @@
     (display-fill-column-indicator-mode)))
 
 ;; Custom Layouts
-(spacemacs|define-custom-layout "@Drbr-Ansible-Autonomy"
-  :binding "paba"
+(spacemacs|define-custom-layout "@Drbr-Spacemacs"
+  :binding "pes"
   :body
-  (find-file "~/.ansible/collections/ansible_collections/bloodymage/autonomy/")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Ansible-Gaming"
-  :binding "pahg"
-  :body
-  (find-file "~/.ansible/collections/ansible_collections/hearthminion/gaming/")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Ansible-Games"
-  :binding "pahG"
-  :body
-  (find-file "~/.ansible/collections/ansible_collections/hearthminion/games/")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Ansible-Hearthminion"
-  :binding "pahh"
-  :body
-  (find-file "~/.ansible/collections/ansible_collections/hearthminion/hearthminion/")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Ansible-Inventories"
-  :binding "pai"
-  :body
-  (find-file "~/.ansible/inventories/")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Ansible-RadiantEndeavors"
-  :binding "par"
-  :body
-  (find-file "~/.ansible/collections/ansible_collections/radiantendeavors/radiantendeavors/")
-  (spacemacs/treemacs-project-toggle)
+  (find-file "~/.emacs.d/")
+  (treemacs)
+  (treemacs-display-current-project-exclusively)
   (winum-select-window-1)
   (display-fill-column-indicator-mode)
   (split-window-right)
@@ -452,67 +346,8 @@
   :binding "peld"
   :body
   (find-file "~/.emacs.d/private/drbr")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Spacemacs"
-  :binding "pes"
-  :body
-  (find-file "~/.emacs.d/")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-HomeAssistantConfig"
-  :binding "ph"
-  :body
-  (find-file "~/Documents/Development/homeassistant_config/configuration.yaml")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Mythtv"
-  :binding "pmm"
-  :body
-  (find-file "~/Documents/Development/mythtv/README.md")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Mythtv-Ansible"
-  :binding "pma"
-  :body
-  (find-file "~/Documents/Development/mythtv_ansible/README.md")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-Mythtv-Packaging"
-  :binding "pmp"
-  :body
-  (find-file "~/Documents/Development/mythtv_packaging/README.rst")
-  (spacemacs/treemacs-project-toggle)
+  (treemacs)
+  (treemacs-display-current-project-exclusively)
   (winum-select-window-1)
   (display-fill-column-indicator-mode)
   (split-window-right)
@@ -527,93 +362,12 @@
     (if agenda-files
         (find-file (first agenda-files))
       (user-error "Error: No agenda files configured, nothing to display.")))
+  (treemacs)
+  (treemacs-display-current-project-exclusively)
+  (winum-select-window-1)
   (split-window-right)
   (org-agenda-list 14)
   (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-trader-development"
-  :binding "ptd"
-  :body
-  (find-file "~/Documents/Development/trader/development")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-trader-release"
-  :binding "ptr"
-  :body
-  (find-file "~/Documents/Development/trader/release")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-trader-stable"
-  :binding "pts"
-  :body
-  (find-file "~/Documents/Development/trader/stable")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-strategy01-develop"
-  :binding "ps1d"
-  :body
-  (find-file "~/Documents/Development/strategy01/development")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-strategy01-stable"
-  :binding "ps1s"
-  :body
-  (find-file "~/Documents/Development/strategy01/stable")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-strategy01-release"
-  :binding "ps1r"
-  :body
-  (find-file "~/Documents/Development/strategy01/release")
-  (spacemacs/treemacs-project-toggle)
-  (winum-select-window-1)
-  (display-fill-column-indicator-mode)
-  (split-window-right)
-  (magit-status-here)
-  (winum-select-window-1)
-  )
-
-(spacemacs|define-custom-layout "@Drbr-config-spacemacs"
-  :binding "ce"
-  :body
-  (find-file "~/.spacemacs")
-  )
-
-(spacemacs|define-custom-layout "@Drbr-config-ssh"
-  :binding "cs"
-  :body
-  (find-file "~/.ssh/config")
   )
 
 (spacemacs|define-custom-layout "@Drbr-games-sudoku"
