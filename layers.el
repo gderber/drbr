@@ -29,19 +29,19 @@
    ;; templates
 
    ;; 5. Email
-   gnus
+   ;; gnus
 
    ;; 6. Emacs
    ;;better-helpful
    ;;defaults
    (ibuffer :variables
             ibuffer-group-buffers-by 'projects)
-   ;;org (Moved to drbr-org)
+   ;;org (Conditionally loaded based on directory structure.)
    ;;outshine
    ;;quickurl
    ;;semantic
    ;;smex
-   ;;tabs
+   ;;tabs  ;; Removed because I found it annoying
    ;;typography
 
    ;; 7. File trees
@@ -76,6 +76,9 @@
    ;;multiple-cursors
    ;;nav-flash
    ;;parinfer
+   (spacemacs-layouts :variables
+                      spacemacs-layouts-restrict-spc-tab t
+                      persp-autokill-buffer-on-remove 't)
 
    ;; 12. Music
    ;;alda
@@ -89,9 +92,10 @@
    ;; 14. Pair programming
 
    ;; 15. Programming languages
-   ;; Emacs-lisp layer is not exactly required by spacemacs, but weird things happen if it's not
-   ;; installed
+   ;; While emacs-lisp layer is not exactly required by spacemacs, they do warn against disabling
+   ;; it and weird things happen if it's not installed
    emacs-lisp
+   toml
    ;; The remainder Conditionally loaded based on user directories (See below)
 
    ;; 16. Readers
@@ -104,11 +108,12 @@
 
 
    ;; 19. Spacemacs
+   ;;spacemacs
 
    ;; 20. Tagging
    ;;cscope
    (gtags :variables
-          gtags-enable-by-default t)
+          gtags-enable-by-default nil)
 
    ;; 21. Themes
    colors
@@ -116,7 +121,6 @@
    theming
 
    ;; 22. Tools
-   ;;ansible (Conditionally loaded based on if ansible exists on the system (See Below))
    ;;bm
    ;;cfengine
    ;;chrome
@@ -144,15 +148,15 @@
    ;;evernote
    ;;twitteer
    ;;wakatime
-
-
    )
  )
 
 ;; Conditionally configured layers
-;; Originally based on if emacs was in a graphical environment.  This would fail if emacs was started automatically
-;; upon login as a daemon, and these layers would be removed.  Requiring, reloading the layers manually each time.
-;;(when (display-graphic-p)
+
+;; Originally based on if emacs was in a graphical environment.  This would fail if emacs was
+;; started automatically upon login as a daemon, and these layers would be removed.  Requiring,
+;; reloading the layers manually each time.
+;; (when (display-graphic-p)
 (when (file-directory-p "~/Documents/")
   (configuration-layer/declare-layers
    '(
@@ -165,92 +169,42 @@
 
      ;; needed by xkcd
      javascript
-     )))
+     ))
 
-(when (file-directory-p "~/Documents/Org")
-  (configuration-layer/declare-layers
-   '(
-     (org :variables
-       org-enable-notifications t
-       org-start-notification-daemon-on-startup t
-       org-enable-org-journal-support t
-       org-journal-dir "~/Documents/Org/.journal/"
-       org-journal-file-format "%Y-%m-%d"
-       org-enable-github-support t
-       org-projectile-file "TODOs.org"
-       org-want-todo-bindings t
-       org-enable-org-brain-support t
-       org-enable-epub-support t)
-     )))
+  )
+
+;; Conditionally load ansible related layers
+(when (or
+       ;;(executable-find "ansible")
+       (file-directory-p "~/.ansible/collections/ansible_collections")
+       (file-directory-p "~/.ansible/inventories")
+       )
+  (load-file "~/.emacs.d/private/drbr/layers/ansible.el")
+  )
+
+;; (when (file-directory-p "~/Documents/Org")
+;;   (load-file "~/.emacs.d/private/drbr/layers/org.el")
+;;   )
 
 (when (file-directory-p "~/Documents/Development")
-  (configuration-layer/declare-layers
-   '(
-     ;; 15. Programming Languages
-     (c-c++ :variables
-            c-c++adopt-subprojects t
-            c-c++-enable-organize-includes-on-save t
-            c-c++backend 'lsp-clangd)
-     csv
-     graphviz
-     html
-     markdown
-     ;; lua
-     ;; php
-     (python :variables
-             python-backend 'anaconda
-             python-test-runner 'pytest
-             python-formatter 'yapf
-             python-format-on-save t
-             python-sort-imports-on-save t
-             python-fill-column 100
-             python-spacemacs-indent-guess nil)
-     ;; rust
-     shell-scripts
-     sql
-     ;; windows-scripts
-     yaml
-
-
-
-     ;; 22. Tools
-     cmake
-     debug
-     )))
-
-(when (executable-find "ansible")
-  (configuration-layer/declare-layers
-   '(
-     ansible
-     markdown
-     yaml
-
-)))
+  (load-file "~/.emacs.d/private/drbr/layers/development.el")
+  )
 
 (when (or
-       (executable-find "ansible")
+       ;;(executable-find "ansible")
        (file-directory-p "~/Documents/Development")
-       (file-directory-p "~/Documents/Org"))
-  (configuration-layer/declare-layers
-   ;; 18. Source Control
-  '(
-    (git :variables
-       git-enable-magit-gitflow-plugin t
-       git-enable-magit-delta-plugin t
-       git-enable-magit-todos-plugin t)
-    (version-control :variables
-                     version-control-diff-tool 'git-gutter
-                     version-control-diff-side 'left
-                     version-control-global-margin t)
-    )
+       (file-directory-p org-directory)
+       (file-directory-p "~/.ansible/collections/ansible_collections")
+       (file-directory-p "~/.ansible/inventories")
+       )
+  (load-file "~/.emacs.d/private/drbr/layers/vcs.el")
   )
-)
 
 (when (executable-find "apache2")
   (configuration-layer/declare-layers
-  '(
-    apache
-    )))
+   '(
+     apache
+     )))
 
 (when (executable-find "nginx")
   (configuration-layer/declare-layers

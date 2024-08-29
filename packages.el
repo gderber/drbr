@@ -1,51 +1,9 @@
-;; packages.el ---
+;; Packages
+;; =================================================================================================
 ;;
-;; Filename: packages.el
-;; Description:
-;; Author: Geoff S Derber
-;; Maintainer:
-;; Created: Mon Jun 10 06:49:01 2019 (-0400)
-;; Version:
-;; Package-Requires: ()
-;; Last-Updated: Mon Jun 10 07:10:56 2019 (-0400)
-;;           By: Geoff S Derber
-;;     Update #: 7
-;; URL:
-;; Doc URL:
-;; Keywords:
-;; Compatibility:
+;; Configures Packages used by this layer
 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Commentary:
-;;
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Change Log:
-;;
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or (at
-;; your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-;; General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;; Code:
-
-
+;; =================================================================================================
 (defconst drbr-packages
   '(
     (fireplace :location elpa)
@@ -58,7 +16,7 @@
     (fancy-battery :excluded t)
     (golden-ratio :excluded t)
     )
-    "The list of Lisp packages required by the drbr layer.
+  "The list of Lisp packages required by the drbr layer.
 
 Each entry is either:
 
@@ -111,9 +69,6 @@ Each entry is either:
 ;;           (find-file (first agenda-files))
 ;;         (user-error "Error: No agenda files configured, nothing to display.")))
 ;;     (winum-select-window-1)))
-
-;;(defun drbr/init-org-contacts()
-;;  (use-package org-contacts))
 
 (defun drbr/init-fireplace()
   (use-package fireplace))
