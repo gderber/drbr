@@ -11,3 +11,5 @@
 ;; (when (file-directory-p org-directory)
 ;;   (LOAD-FILE "~/.EMACS.d/private/drbr/keybindings/org.el")
 ;;   )
+
+;;(define-key special-event-map [sigusr1] 'signal-restart-server)

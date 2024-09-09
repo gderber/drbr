@@ -1,17 +1,14 @@
 ;; ORG
 (with-eval-after-load 'org
-  (setq  org-agenda-files (list org-directory)
-         org-agenda-ndays 14)
+  (setq-default  org-agenda-files (list org-directory)
+                 org-agenda-ndays 14)
   )
 
 ;; Layout
 (spacemacs|define-custom-layout "@Drbr-Org"
   :binding "O"
   :body
-  (let ((agenda-files (org-agenda-files)))
-    (if agenda-files
-        (find-file (first agenda-files))
-      (user-error "Error: No agenda files configured, nothing to display.")))
+  (find-file (first org-agenda-files))
   (treemacs)
   (treemacs-display-current-project-exclusively)
   (winum-select-window-1)

@@ -1,3 +1,4 @@
+;; Ansible Specific Configuration
 (when (file-directory-p "~/.ansible/inventories")
   (add-to-list 'magit-repository-directories '("~/.ansible/inventories" . 0))
   )

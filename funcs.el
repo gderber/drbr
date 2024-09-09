@@ -11,7 +11,11 @@
 ;; Compatibility:
 ;;
 ;; =================================================================================================
-(defun drbr/project-layout ()
+(defun drbr/project-layout-start (&optional layout-file)
+  "Initializes an Project Layout"
+  (interactive)
+  (if layout-file
+      (find-file layout-file))
   (treemacs)
   (treemacs-display-current-project-exclusively)
   (winum-select-window-1)
@@ -32,6 +36,7 @@
   )
 
 (defun drbr/fortune-signature (&optional file signature-separator)
+  (interactive)
   (end-of-buffer)
   (if signature-separator
       (insert signature-separator)
@@ -42,6 +47,22 @@
     (insert (fortune-to-signature))
     )
   )
+
+;; Fix for broken daemon mode
+;;(defun signal-restart-server ()
+;;    "Handler for SIGUSR1 signal, to (re)start an emacs server.
+;;
+;;Can be tested from within emacs with:
+;; (signal-process (emacs-pid) 'sigusr1)
+;;
+;;or from the command line with:
+;;$ kill -USR1 <emacs-pid>
+;;$ emacsclient -c
+;;"
+;;    (interactive)
+;;    (server-force-delete)
+;;    (server-start))
+;;)
 
 ;; (when (file-directory-p org-directory)
 ;;   (load-file "~/.emacs.d/private/drbr/funcs/org.el")

@@ -56,7 +56,7 @@
 
 
    ;; 8. Fonts
-   ;;unicode-fonts
+   unicode-fonts
 
    ;; 9. Fun (Conditionally loaded based on gui environment (See below))
    ;;emoji (Conditionally loaded based on gui environment)
@@ -71,14 +71,11 @@
 
    ;; 11. Misc
    ;;copy-as-format
-   ;;dtrt-indent
-   ;;ietf
+   dtrt-indent
+   ietf
    ;;multiple-cursors
-   ;;nav-flash
+   nav-flash
    ;;parinfer
-   (spacemacs-layouts :variables
-                      spacemacs-layouts-restrict-spc-tab t
-                      persp-autokill-buffer-on-remove 't)
 
    ;; 12. Music
    ;;alda
@@ -94,8 +91,8 @@
    ;; 15. Programming languages
    ;; While emacs-lisp layer is not exactly required by spacemacs, they do warn against disabling
    ;; it and weird things happen if it's not installed
-   emacs-lisp
-   toml
+   (emacs-lisp :variables
+               emacs-lisp-format-on-save nil)
    ;; The remainder Conditionally loaded based on user directories (See below)
 
    ;; 16. Readers
@@ -108,12 +105,9 @@
 
 
    ;; 19. Spacemacs
-   ;;spacemacs
-
-   ;; 20. Tagging
-   ;;cscope
-   (gtags :variables
-          gtags-enable-by-default nil)
+   ;; (spacemacs-layouts :variables
+   ;;                    ;; spacemacs-layouts-restrict-spc-tab 't)
+   ;;                    persp-autokill-buffer-on-remove 't)
 
    ;; 21. Themes
    colors
@@ -130,7 +124,6 @@
    ;;(geolocation :variables
    ;;             geolocation-enable-weather-forecast t)
    ;;nginx (Conditionally loaded based on if Nginx is installed on the system (See Below))
-   pandoc
    pass
    (shell :variables
           shell-default-height 30
@@ -182,7 +175,7 @@
   (load-file "~/.emacs.d/private/drbr/layers/ansible.el")
   )
 
-;; (when (file-directory-p "~/Documents/Org")
+;; (when (file-directory-p org-directory)
 ;;   (load-file "~/.emacs.d/private/drbr/layers/org.el")
 ;;   )
 

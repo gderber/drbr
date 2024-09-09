@@ -18,5 +18,6 @@
         org-start-notification-daemon-on-startup t
         org-want-todo-bindings t
         )
+   pandoc
    )
  )
