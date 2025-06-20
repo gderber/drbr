@@ -14,20 +14,25 @@
      lua
      ;; php
      (python :variables
-             python-backend 'lsp
-             python-test-runner 'pytest
-             python-formatter 'lsp
-             python-sort-imports-on-save t
-             python-format-on-save t
-             python-fill-column fill-column
+             importmagic-python-interpreter "python3"
              python-auto-set-local-pyvenv-virtualenv nil
-             python-spacemacs-indent-guess nil)
+             python-backend 'lsp
+             python-fill-column fill-column
+             ;; python-formatter 'yapf
+             python-format-on-save t
+             python-sort-imports-on-save t
+             python-spacemacs-indent-guess nil
+             )
      ;; rust
-     shell-scripts
-     sql
+     (shell-scripts :variables
+                    shell-scripts-backend 'lsp
+                    shell-scripts-format-on-save t)
+     (sql :variables
+          sql-capitalize-keywords t)
      toml
      ;; windows-scripts
-     yaml
+     (yaml :variables
+           :variables yaml-enable-lsp t)
 
      ;; 20. Tagging
      ;;cscope
@@ -38,14 +43,14 @@
      (cmake :variables
             cmake-enable-cmake-ide-support t)
      debug
-     lsp
-     ;; (lsp :variables
-     ;;      ;;lsp-lens-enable t
-     ;;      ;; ;; lsp-modeline-diagnostics-scope variable is obsolete
-     ;;      ;;lsp-modeline-code-actions-segments '(icon name count)
-     ;;      ;;lsp-headerline-breadcrumb-segments t
-     ;;      ;;lsp-headerline-breadcrumb-segments '(project file symbols)
-     ;;      )
+     (lsp :variables
+          ;;lsp-log-io t
+          lsp-lens-enable t
+          ;; ;; lsp-modeline-diagnostics-scope variable is obsolete
+          ;;lsp-modeline-code-actions-segments '(icon name count)
+          lsp-headerline-breadcrumb-segments t
+          lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols)
+          )
      )
 
 

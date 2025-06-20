@@ -15,7 +15,8 @@
    ;; slack
 
    ;; 3. Checkers
-   spell-checking
+   (spell-checking :variables
+                   enable-flyspell-auto-completion t)
    syntax-checking
 
    ;; 4. Completion
@@ -50,7 +51,7 @@
              treemacs-lock-width t
              treemacs-use-scope-type 'Perspectives
              treemacs-use-follow-mode t
-             treemacs-use-filewatch-mode t
+             treemacs-use-filewatch-mode nil
              treemacs-use-git-mode 'deferred
              )
 
@@ -175,7 +176,7 @@
   (load-file "~/.emacs.d/private/drbr/layers/ansible.el")
   )
 
-;; (when (file-directory-p org-directory)
+;; (when (file-directory-p "~/Documents/Org")
 ;;   (load-file "~/.emacs.d/private/drbr/layers/org.el")
 ;;   )
 
@@ -186,7 +187,7 @@
 (when (or
        ;;(executable-find "ansible")
        (file-directory-p "~/Documents/Development")
-       (file-directory-p org-directory)
+       (file-directory-p "~/Documents/Org")
        (file-directory-p "~/.ansible/collections/ansible_collections")
        (file-directory-p "~/.ansible/inventories")
        )

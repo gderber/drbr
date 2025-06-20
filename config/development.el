@@ -7,7 +7,15 @@
                 ("~/.emacs.d" . 0)
                 ("~/.emacs.d/private/drbr" . 0)
                 )
-              forge-topic-list-limit '(100 . 0))
+              forge-topic-list-limit '(100 . 0)
+              shell-scripts-mark-executable-after-save nil
+              lsp-pylsp-plugins-pylint-enabled 't
+              lsp-pylsp-plugins-yapf-enabled 't
+              ;; lsp-pylsp-plugins-rope-autoimport-enabled 't
+              lsp-pylsp-plugins-isort-enabled 't
+              lsp-pylsp-plugins-flake8-enabled 't
+              ;; lsp-pylsp-configuration-sources ["pylsp-mypy"]
+              )
 
 
 (when (file-directory-p "~/Documents/Development/")

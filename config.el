@@ -1,9 +1,8 @@
-;; Provide a useful error trace if loading this monster fails.
-(setq-default debug-on-error t)
-
 ;;;;; Global Settings ;;;;;
-;; (savehist-mode 1)
-(setq-default ;;size-indication-mode t
+(setq-default
+ ;; Provide a useful error trace if loading this monster fails.
+ debug-on-error t
+
  display-time-24hr-format 't
  display-time-day-and-date 't
  display-time-mode 't
@@ -12,26 +11,20 @@
  dotspacemacs-persistent-server t
  emacs-load-start-time (current-time)  ;; uptimes
  fill-column 100
- fortune-dir "/usr/share/games/fortunes"
- fortune-file "/usr/share/games/fortunes/startrek"
  require-final-newline 't ;; Always newline at end of file
  scroll-bar-mode 'right
  sentence-end-double-space t ;; End sentences with two spaces
- ;; Fix issue with daemon mode screwing up window numbering with multiple clients
- winum-scope 'frame-local
+
+ ;; Layouts
+ ;; Restrict SPC-TAB to the current layout's buffers
  spacemacs-layouts-restrict-spc-tab t
  persp-autokill-buffer-on-remove 'kill-weak
+
+ ;; Fix issue with daemon mode screwing up window numbering with multiple clients
+ winum-scope 'frame-local
  )
 
-;; Supply a random fortune cookie as the *scratch* message.
-;; (when (executable-find "fortune")
-;;   (setq-default initial-scratch-message
-;;                 (with-temp-buffer
-;;                   (shell-command "fortune" t)
-;;                   (let ((comment-start ";;"))
-;;                     (comment-region (point-min) (point-max)))
-;;                   (concat (buffer-string) "\n"))
-;;                 ))
+;; (savehist-mode 1)
 
 ;; Miscellaneous settings
 ;; All settings clicked in the Options menu are saved here by Emacs.
@@ -41,7 +34,6 @@
 ;; Your init file should contain only one such instance.
 ;; If there is more than one, they won't work right.
 ;; '(column-number-mode t)
-;; '(display-battery-mode t)
 ;; '(display-time-default-load-average t)
 ;; '(display-time-mail-file (quote none))
 ;;'(indicate-buffer-boundaries (quote ((t . right) (top . left))))
@@ -50,6 +42,7 @@
 ;;'(save-place t nil (saveplace))
 ;;'(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
 ;;'(uniquify-buffer-name-style (quote forward) nil (uniquify))
+
 ;; Backup Settings
 ;;'(backup-directory-alist '(("." . "~/.emacs.d/backups")))
 ;;'(delete-old-versions -1)
@@ -92,15 +85,18 @@
 ;; Graphic UI Environment
 (when (display-graphic-p)
   ;; Sudoku Settings
-  (setq-default sudoku-level 'medium)
-  (setq-default sudoku-style 'unicode)
-  (setq-default sudoku-autoinsert-mode nil)
+  (setq-default
+   sudoku-level 'medium
+   sudoku-style 'unicode
+   sudoku-autoinsert-mode nil
 
-  ;; This sounds more fun than it really is.
-  ;;(setq-default colors-enable-nyan-cat-progress-bar t)
+   ;; This sounds more fun than it really is.
+   ;;colors-enable-nyan-cat-progress-bar t
+   )
   )
 
 (load-file "~/.emacs.d/private/drbr/config/development.el")
+(load-file "~/.emacs.d/private/drbr/config/fortune.el")
 
 ;; (when (file-directory-p org-directory)
 ;;   (load-file "~/.emacs.d/private/drbr/config/org.el")
