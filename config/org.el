@@ -20,7 +20,6 @@
 
 ;; ;; Files and Directories
 
-;; '(org-archive-location "~/Documents/Org/archive.org")
 ;; ;; Agenda Settings
 ;; '()
 ;; '(org-agenda-show-all-dates t)
@@ -55,8 +54,6 @@
 ;; Org Mode
 
 ;; ORG MODE
-;;(setq org-agenda-files (list "~/Documents/Org/work.org"
-;;                             "~/Documents/Org/personal.org"))
 ;; Todo Options
 ;; (setq org-todo-state-tags-triggers
 ;;       '(("CANCELLED" ("CANCELLED" . t))

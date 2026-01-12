@@ -16,9 +16,9 @@
      (python :variables
              importmagic-python-interpreter "python3"
              python-auto-set-local-pyvenv-virtualenv nil
-             python-backend 'lsp
+             python-backend 'anaconda
              python-fill-column fill-column
-             ;; python-formatter 'yapf
+             python-formatter 'yapf
              python-format-on-save t
              python-sort-imports-on-save t
              python-spacemacs-indent-guess nil
@@ -44,12 +44,11 @@
             cmake-enable-cmake-ide-support t)
      debug
      (lsp :variables
-          ;;lsp-log-io t
           lsp-lens-enable t
           ;; ;; lsp-modeline-diagnostics-scope variable is obsolete
           ;;lsp-modeline-code-actions-segments '(icon name count)
-          lsp-headerline-breadcrumb-segments t
-          lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols)
+          lsp-headerline-breadcrumb-segments nil
+          ;; lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols)
           )
      )
 

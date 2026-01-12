@@ -98,9 +98,9 @@
 (load-file "~/.emacs.d/private/drbr/config/development.el")
 (load-file "~/.emacs.d/private/drbr/config/fortune.el")
 
-;; (when (file-directory-p org-directory)
-;;   (load-file "~/.emacs.d/private/drbr/config/org.el")
-;;   )
+(when (file-directory-p org-directory)
+  (load-file "~/.emacs.d/private/drbr/config/org.el")
+  )
 
 (when (or
        ;;(executable-find "ansible")

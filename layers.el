@@ -21,9 +21,18 @@
 
    ;; 4. Completion
    (auto-completion :variables
+                    auto-completion-complete-with-key-sequence nil
+                    auto-completion-complete-with-key-sequence-delay 0.1
+                    auto-completion-enable-help-tooltip nil
+                    auto-completion-enable-snippets-in-popup t
+                    auto-completion-enable-sort-by-usage t
+                    auto-completion-idle-delay nil
+                    auto-completion-minimum-prefix-length 2
+                    auto-completion-private-snippets-directory nil
                     auto-completion-return-key-behavior 'complete
                     auto-completion-tab-key-behavior 'complete
-                    auto-completion-enable-snippets-in-popup t)
+                    auto-completion-use-company-box nil
+                    )
    (helm :variables
          helm-position 'bottom)
    ;; ivy
@@ -187,7 +196,7 @@
 (when (or
        ;;(executable-find "ansible")
        (file-directory-p "~/Documents/Development")
-       (file-directory-p "~/Documents/Org")
+       (file-directory-p org-directory)
        (file-directory-p "~/.ansible/collections/ansible_collections")
        (file-directory-p "~/.ansible/inventories")
        )

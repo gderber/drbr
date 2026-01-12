@@ -4,7 +4,7 @@
 ;;
 ;; =================================================================================================
 (spacemacs|define-custom-layout "@Drbr-Spacemacs"
-  :binding "pes"
+  :binding "ds"
   :body
   (find-file "~/.emacs.d")
   (treemacs)
@@ -17,7 +17,7 @@
   )
 
 (spacemacs|define-custom-layout "@Drbr-EmacsLayer"
-  :binding "peld"
+  :binding "de"
   :body
   (find-file "~/.emacs.d/private/drbr")
   (treemacs)
@@ -30,25 +30,25 @@
   )
 
 (spacemacs|define-custom-layout "@Drbr-games-sudoku"
-  :binding "Gs"
+  :binding "dGs"
   :body
   (sudoku)
   )
 
 (spacemacs|define-custom-layout "@Drbr-games-tetris"
-  :binding "Gt"
+  :binding "dGt"
   :body
   (tetris)
   )
 
 (spacemacs|define-custom-layout "@Drbr-fun-xkcd"
-  :binding "fx"
+  :binding "dfx"
   :body
   (xkcd)
   )
 
 (spacemacs|define-custom-layout "@Drbr-fun-fireplace"
-  :binding "ff"
+  :binding "dff"
   :body
   (fireplace)
   )
