@@ -7,7 +7,7 @@
  display-time-day-and-date 't
  display-time-mode 't
  dotspacemacs-enable-server t
- dotspacemacs-folding-method 'origami
+ ;; dotspacemacs-folding-method 'origami
  dotspacemacs-persistent-server t
  emacs-load-start-time (current-time)  ;; uptimes
  fill-column 100
