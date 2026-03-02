@@ -1,7 +1,6 @@
 (configuration-layer/declare-layers
  '(
    (org :variables
-        org-directory "~/Documents/Org"
         org-enable-epub-support t
         org-enable-github-support t
         org-enable-hugo-support t

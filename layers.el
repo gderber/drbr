@@ -185,7 +185,7 @@
   (load-file "~/.emacs.d/private/drbr/layers/ansible.el")
   )
 
-;; (when (file-directory-p "~/Documents/Org")
+;; (when (file-directory-p org-directory)
 ;;   (load-file "~/.emacs.d/private/drbr/layers/org.el")
 ;;   )
 
@@ -214,7 +214,6 @@
    '(
      nginx
      )))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; layers.el ends here
