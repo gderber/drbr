@@ -27,8 +27,6 @@
 (set-fontset-font "fontset-default" '(#xe000 . #xf8ff)
                   "Unifont CSUR")
 
-;; (savehist-mode 1)
-
 ;; Miscellaneous settings
 ;; All settings clicked in the Options menu are saved here by Emacs.
 ;;(custom-set-variables

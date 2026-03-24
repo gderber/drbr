@@ -1,4 +1,3 @@
-;; Development Environment
 (setq-default git-magit-status-fullscreen nil
               global-git-commit-mode t
               auth-sources '("~/.authinfo.gpg")

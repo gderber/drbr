@@ -1,4 +1,3 @@
-;;
 (when (or
        (file-directory-p "~/Documents/Development")
        (file-directory-p "~/Src")

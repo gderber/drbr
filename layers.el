@@ -121,7 +121,7 @@
 
    ;; 21. Themes
    colors
-   themes-megapack
+   ;;themes-megapack
    theming
 
    ;; 22. Tools
@@ -174,6 +174,25 @@
      javascript
      ))
 
+<<<<<<< HEAD
+  )
+||||||| parent of 8aca10b (Release 0.1.0)
+(when (file-directory-p "~/Documents/Org")
+  (configuration-layer/declare-layers
+   '(
+     (org :variables
+       org-enable-notifications t
+       org-start-notification-daemon-on-startup t
+       org-enable-org-journal-support t
+       org-journal-dir "~/Documents/Org/.journal/"
+       org-journal-file-format "%Y-%m-%d"
+       org-enable-github-support t
+       org-projectile-file "TODOs.org"
+       org-want-todo-bindings t
+       org-enable-org-brain-support t
+       org-enable-epub-support t)
+     )))
+=======
   )
 
 ;; Conditionally load ansible related layers
@@ -188,10 +207,81 @@
 ;; (when (file-directory-p org-directory)
 ;;   (load-file "~/.emacs.d/private/drbr/layers/org.el")
 ;;   )
+>>>>>>> 8aca10b (Release 0.1.0)
+
+<<<<<<< HEAD
+;; Conditionally load ansible related layers
+(when (or
+       ;;(executable-find "ansible")
+       (file-directory-p "~/.ansible/collections/ansible_collections")
+       (file-directory-p "~/.ansible/inventories")
+       )
+  (load-file "~/.emacs.d/private/drbr/layers/ansible.el")
+  )
+
+;; (when (file-directory-p org-directory)
+;;   (load-file "~/.emacs.d/private/drbr/layers/org.el")
+;;   )
+||||||| parent of 8aca10b (Release 0.1.0)
+(when (file-directory-p "~/Documents/Development")
+  (configuration-layer/declare-layers
+   '(
+     ;; 15. Programming Languages
+     (c-c++ :variables
+            c-c++adopt-subprojects t
+            c-c++-enable-organize-includes-on-save t
+            c-c++backend 'lsp-clangd)
+     csv
+     graphviz
+     html
+     markdown
+     ;; lua
+     ;; php
+     (python :variables
+             python-backend 'anaconda
+             python-test-runner 'pytest
+             python-formatter 'yapf
+             python-format-on-save t
+             python-sort-imports-on-save t
+             python-fill-column 100
+             python-spacemacs-indent-guess nil)
+     ;; rust
+     shell-scripts
+     sql
+     ;; windows-scripts
+     yaml
+
+
+
+     ;; 22. Tools
+     cmake
+     debug
+     )))
+
+(when (executable-find "ansible")
+  (configuration-layer/declare-layers
+   '(
+     ansible
+     markdown
+     yaml
+
+)))
+=======
+(when (file-directory-p "~/Documents/Development")
+  (load-file "~/.emacs.d/private/drbr/layers/development.el")
+  )
+>>>>>>> 8aca10b (Release 0.1.0)
 
 (when (or
+<<<<<<< HEAD
        (file-directory-p "~/Src")
+||||||| parent of 8aca10b (Release 0.1.0)
+       (executable-find "ansible")
+=======
+       ;;(executable-find "ansible")
+>>>>>>> 8aca10b (Release 0.1.0)
        (file-directory-p "~/Documents/Development")
+<<<<<<< HEAD
        )
   (load-file "~/.emacs.d/private/drbr/layers/development.el")
   )
@@ -205,6 +295,27 @@
        (file-directory-p "~/.ansible/inventories")
        )
   (load-file "~/.emacs.d/private/drbr/layers/vcs.el")
+||||||| parent of 8aca10b (Release 0.1.0)
+       (file-directory-p "~/Documents/Org"))
+  (configuration-layer/declare-layers
+   ;; 18. Source Control
+  '(
+    (git :variables
+       git-enable-magit-gitflow-plugin t
+       git-enable-magit-delta-plugin t
+       git-enable-magit-todos-plugin t)
+    (version-control :variables
+                     version-control-diff-tool 'git-gutter
+                     version-control-diff-side 'left
+                     version-control-global-margin t)
+    )
+=======
+       (file-directory-p org-directory)
+       (file-directory-p "~/.ansible/collections/ansible_collections")
+       (file-directory-p "~/.ansible/inventories")
+       )
+  (load-file "~/.emacs.d/private/drbr/layers/vcs.el")
+>>>>>>> 8aca10b (Release 0.1.0)
   )
 
 (when (executable-find "apache2")
