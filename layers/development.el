@@ -1,8 +1,13 @@
 ;;
-(when (file-directory-p "~/Documents/Development")
+(when (or
+       (file-directory-p "~/Documents/Development")
+       (file-directory-p "~/Src")
+       )
   (configuration-layer/declare-layers
    '(
      ;; 15. Programming Languages
+     (clojure :variables
+              clojure-enable-fancify-symbols t)
      (c-c++ :variables
             c-c++adopt-subprojects t
             c-c++-enable-organize-includes-on-save t

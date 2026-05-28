@@ -16,8 +16,8 @@
   (winum-select-window-1)
   )
 
-(spacemacs|define-custom-layout "@Drbr-EmacsLayer"
-  :binding "de"
+(spacemacs|define-custom-layout "@Emacs-Layer-Drbr"
+  :binding "Eld"
   :body
   (find-file "~/.emacs.d/private/drbr")
   (treemacs)
@@ -29,26 +29,26 @@
   (winum-select-window-1)
   )
 
-(spacemacs|define-custom-layout "@Drbr-games-sudoku"
-  :binding "dGs"
+(spacemacs|define-custom-layout "@Drbr-games-Sudoku"
+  :binding "Gs"
   :body
   (sudoku)
   )
 
 (spacemacs|define-custom-layout "@Drbr-games-tetris"
-  :binding "dGt"
+  :binding "Gt"
   :body
   (tetris)
   )
 
 (spacemacs|define-custom-layout "@Drbr-fun-xkcd"
-  :binding "dfx"
+  :binding "fx"
   :body
   (xkcd)
   )
 
 (spacemacs|define-custom-layout "@Drbr-fun-fireplace"
-  :binding "dff"
+  :binding "ff"
   :body
   (fireplace)
   )

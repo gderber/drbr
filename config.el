@@ -24,6 +24,9 @@
  winum-scope 'frame-local
  )
 
+(set-fontset-font "fontset-default" '(#xe000 . #xf8ff)
+                  "Unifont CSUR")
+
 ;; (savehist-mode 1)
 
 ;; Miscellaneous settings

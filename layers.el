@@ -189,12 +189,16 @@
 ;;   (load-file "~/.emacs.d/private/drbr/layers/org.el")
 ;;   )
 
-(when (file-directory-p "~/Documents/Development")
+(when (or
+       (file-directory-p "~/Src")
+       (file-directory-p "~/Documents/Development")
+       )
   (load-file "~/.emacs.d/private/drbr/layers/development.el")
   )
 
 (when (or
        ;;(executable-find "ansible")
+       (file-directory-p "~/Src")
        (file-directory-p "~/Documents/Development")
        (file-directory-p org-directory)
        (file-directory-p "~/.ansible/collections/ansible_collections")

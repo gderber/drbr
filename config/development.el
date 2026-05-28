@@ -39,6 +39,6 @@
               )
 
 
-(when (file-directory-p "~/Documents/Development/")
-  (add-to-list 'magit-repository-directories '("~/Documents/Development" . 2))
+(when (file-directory-p "~/Src/")
+  (add-to-list 'magit-repository-directories '("~/Src" . 2))
   )
