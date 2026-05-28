@@ -175,22 +175,6 @@
      javascript
      ))
 
-(when (file-directory-p "~/Documents/Org")
-  (configuration-layer/declare-layers
-   '(
-     (org :variables
-       org-enable-notifications t
-       org-start-notification-daemon-on-startup t
-       org-enable-org-journal-support t
-       org-journal-dir "~/Documents/Org/.journal/"
-       org-journal-file-format "%Y-%m-%d"
-       org-enable-github-support t
-       org-projectile-file "TODOs.org"
-       org-want-todo-bindings t
-       org-enable-org-brain-support t
-       org-enable-epub-support t)
-     )))
-
 ;; Conditionally load ansible related layers
 (when (or
        ;;(executable-find "ansible")
@@ -205,6 +189,13 @@
 ;;   )
 
 (when (or
+       (file-directory-p "~/Src")
+       (file-directory-p "~/Documents/Development")
+       )
+  (load-file "~/.emacs.d/private/drbr/layers/development.el")
+  )
+
+(when (or
        ;;(executable-find "ansible")
        (file-directory-p "~/Src")
        (file-directory-p "~/Documents/Development")
@@ -213,6 +204,7 @@
        (file-directory-p "~/.ansible/inventories")
        )
   (load-file "~/.emacs.d/private/drbr/layers/vcs.el")
+  )
 
 (when (executable-find "apache2")
   (configuration-layer/declare-layers
