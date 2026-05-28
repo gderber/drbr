@@ -174,7 +174,7 @@
      ;; needed by xkcd
      javascript
      ))
-
+)
 ;; Conditionally load ansible related layers
 (when (or
        ;;(executable-find "ansible")
