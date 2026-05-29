@@ -205,6 +205,7 @@
        (file-directory-p "~/.ansible/inventories")
        )
   (load-file "~/.emacs.d/private/drbr/layers/vcs.el")
+  )
 
 (when (executable-find "apache2")
   (configuration-layer/declare-layers
