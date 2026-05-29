@@ -190,6 +190,7 @@
 
 (when (or
        (file-directory-p "~/Src")
+       ;;(executable-find "ansible")
        (file-directory-p "~/Documents/Development")
        )
   (load-file "~/.emacs.d/private/drbr/layers/development.el")
@@ -204,7 +205,6 @@
        (file-directory-p "~/.ansible/inventories")
        )
   (load-file "~/.emacs.d/private/drbr/layers/vcs.el")
-  )
 
 (when (executable-find "apache2")
   (configuration-layer/declare-layers
